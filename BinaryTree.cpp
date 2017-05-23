@@ -29,6 +29,10 @@ public:
 	T* findtheleast();
     bool isEmpty() const { return root==NULL; }
     void copy(Tree<T>&);
+    Leaf* next(Leaf *x);
+    Leaf* prev(Leaf *x);
+    Leaf* minimum(Leaf *root);
+    Leaf* maximum(Leaf *root);
 protected:
     void ascendinground(Leaf* L);
 private:
@@ -36,6 +40,55 @@ private:
 	void SymmetricOrder(Leaf*);
     void _copy(Leaf* cpy, Leaf* orig);
 };
+template <class t>
+tree<t>::Leaf* tree<t>::next(Leaf *x)
+{
+	if (x->Right) //правый элемент найден
+	{
+		return minimum(x->Right);
+	}
+	else
+	{
+		while (x->parent != nullptr && x->parent->Left == x)
+		{
+			x = x->parent;
+		}
+		return x;
+	}
+}
+
+template <class t>
+tree<t>::Leaf* tree<t>::prev(Leaf *x)
+Leaf* prev(Leaf *x) //предыдущий элемент
+{
+	if (x->Left) //левый элемент найден
+	{
+		return maximum(x->Left);
+	}
+	else
+	{
+		while (x->parent != nullptr && x->parent->Right == x)
+		{
+			x = x->parent;
+		}
+		return x;
+	}
+}
+
+template <class t>
+tree<t>::Leaf* tree<t>::minimum(Leaf *x) //минимальный элемент
+{
+	for (; root->Left != nullptr; root = root->Left);
+	return root;
+}
+
+template <class t>
+tree<t>::Leaf* tree<t>::maximum(Leaf *x) //максимальный элемент
+{
+	for (; root->Right != nullptr; root = root->Right);
+	return root;
+}
+
 template <class T>
 void Tree<T>::insert(T& d)
 {
