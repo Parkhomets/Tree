@@ -35,6 +35,7 @@ public:
 	void where(Tree<T>&, bool(*)(T&), Leaf*);
 	bool Find();
 	int heightOfTree(Leaf* root);
+	void ArithMean(Leaf* root,int &element,int &counter);
     
 protected:
 	void ascendinground(Leaf* L);
