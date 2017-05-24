@@ -21,6 +21,7 @@ public:
 	};
 	Leaf *root;
 	int high;
+	int len(Leaf *current);
     void swap(Leaf *one, Leaf *two);
 	void Del(Leaf *kot);
 	void insert(T& d);
@@ -53,6 +54,24 @@ void Tree<T>::swap(Leaf *one, Leaf *two){
     }
     else {
         cout << "Can't swap with NULL." << endl;
+    }
+}
+
+template <typename T>
+int Tree<T>::len(Leaf *current){
+    int x = 0;
+    if (current == NULL) {
+    	return 0;
+    }
+    else {
+    	x+=1;
+    	if (current->Left != NULL) {
+    		x+=len(current->Left);
+    	    }
+    	if (current->Right != NULL) {
+    		x+=len(current->Right);
+    	}
+    return x;
     }
 }
 
@@ -389,7 +408,8 @@ while(1)
    cout<<" 5. Find for the entry" << endl;
      cout<<" 6. Height of the tree" << endl;
    cout<<" 7. Convert elements to maximum number "<<endl;
-cout<<"8. Exit "<<endl;
+   cout<<" 8. Total number of leaves "<<endl;
+cout<<"9. Exit "<<endl;
 cout<<" Enter your choice : ";
 cin>>ch;
 switch(ch)
@@ -436,7 +456,10 @@ break;
 case 7 : cout << endl;
 	//Stud1.popelem();
 	break;
-case 8 : system("pause");
+case 8: 
+    cout << "Total number of leaves: " << Stud1.len(Stud1.root) << endl;
+    break;
+case 9 : system("pause");
 return 0;
 break;
 }
