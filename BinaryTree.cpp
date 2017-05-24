@@ -419,7 +419,7 @@ cout<<"Height:"<<endl;
 cout << Stud1.heightOfTree(Stud1.root);
 break;
 case 7 : cout << endl;
-	Stud1.popelem();
+	//Stud1.popelem();
 	break;
 case 8 : system("pause");
 return 0;
