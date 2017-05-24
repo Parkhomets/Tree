@@ -32,7 +32,7 @@ public:
 	void where(Tree<T>&, bool(*)(T&), Leaf*);
 	int Find();
 	int heightOfTree(Leaf* root);
-    void showH(int a);
+    
 protected:
 	void ascendinground(Leaf* L);
 private:
@@ -218,10 +218,6 @@ int Tree<T>::heightOfTree(Leaf* root){//передаем указатель на
     return high+1;
 }
 
-template <typename T>
-void Tree<T>::showH(int a){
-        cout<<a;
-}
 
 
 class Student{
@@ -396,7 +392,7 @@ case 6:cout << endl;
 
 cout<<endl;
 cout<<"Height:"<<endl;
-Stud1.showH(Stud1.heightOfTree(Stud1.root));
+cout << Stud1.heightOfTree(Stud1.root);
 break;
 case 7 : system("pause");
 return 0;
