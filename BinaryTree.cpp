@@ -174,18 +174,17 @@ void Tree<T>::where(Tree<T>&Tr, bool(*cmp)(T&), Leaf*L){
 template <typename T>
 bool Tree<T>::Find(){
 	Leaf *pv = root, *prev;
-	bool found = false;
 	T element1;
 	cout << "Enter the student/professor to search for:" << endl;
 	cin >> element1;
-	while (pv && !found)
+	while (pv)
 	{
 		prev = pv;
-		if (element1 == pv->element) found = true;
-		else if (element1 < pv->element) pv = pv->Left;
+		if (element1 == pv->element) return true;
+		if (element1 < pv->element) pv = pv->Left;
 		else pv = pv->Right;
 	}
-	return found;
+	return false;
 }
 
 
