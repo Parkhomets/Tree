@@ -373,7 +373,8 @@ while(1)
    cout<<" 4. Ascending bypass"<<endl;
    cout<<" 5. Find for the entry" << endl;
      cout<<" 6. Height of the tree" << endl;
-   cout<<" 7. Exit "<<endl;
+   cout<<" 7. Convert elements to maximum number "<<endl;
+cout<<"8. Exit "<<endl;
 cout<<" Enter your choice : ";
 cin>>ch;
 switch(ch)
@@ -417,7 +418,10 @@ cout<<endl;
 cout<<"Height:"<<endl;
 cout << Stud1.heightOfTree(Stud1.root);
 break;
-case 7 : system("pause");
+case 7 : cout << endl;
+	Stud1.popelem();
+	break;
+case 8 : system("pause");
 return 0;
 break;
 }
