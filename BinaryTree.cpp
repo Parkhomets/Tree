@@ -185,8 +185,7 @@ bool Tree<T>::Find(){
 		else if (element1 < pv->element) pv = pv->Left;
 		else pv = pv->Right;
 	}
-	if (found) return true;
-	else return false;
+	return found;
 }
 
 
