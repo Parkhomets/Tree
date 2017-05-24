@@ -30,7 +30,7 @@ public:
 	bool isEmpty() const { return root == NULL; }
 	void copy(Tree<T>&);
 	void where(Tree<T>&, bool(*)(T&), Leaf*);
-	int Find(Leaf* root);
+	int Find();
 	int heightOfTree(Leaf* root);
     void showH(int a);
 protected:
@@ -172,7 +172,7 @@ void Tree<T>::where(Tree<T>&Tr, bool(*cmp)(T&), Leaf*L){
 	where(Tr, cmp, L->Right);
 }
 template <typename T>
-int Tree<T>::Find(Leaf* root){
+int Tree<T>::Find(){
 	Leaf *pv = root, *prev;
 	bool found = false;
 	T element1;
@@ -387,7 +387,7 @@ cout<<" *****************"<<endl;
 Stud1.beginascendinground();
 break;
 case 5: cout << endl;
-	if (Stud1.Find(Stud1.root) == 1){
+	if (Stud1.Find() == 1){
 		cout << "The student was found";
 	}
 	else cout << "The student is not found";
