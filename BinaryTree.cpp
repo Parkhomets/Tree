@@ -466,18 +466,17 @@ cout<<endl;
 cout<<"Height:"<<endl;
 cout << Stud1.heightOfTree(Stud1.root);
 break;
-case 7 : cout << endl;
-	//Stud1.popelem();
-	break;
-case 9: cout << endl;
-	int value=0;
-        int counter=0;
+/*case 7 : cout << endl;
+	Stud1.popelem();
+	break;*/
+case 8 : system("pause");
+case 9 : cout << endl;
+    int value=0;
+    int counter=0;
 	Int_Tree.ArithMean(Int_Tree.root, value, counter);
 	cout << "The arithmetic mean of elements= " << (double)value / counter << endl;
 break;
-case 10 : system("pause");
+}
+}
 return 0;
-break;
-}
-}
 }
