@@ -27,6 +27,7 @@ public:
 	void beginascendinground();
 	void beginSymmetricOrder();
 	T* findtheleast();
+	void popelem();
 	bool isEmpty() const { return root == NULL; }
 	void copy(Tree<T>&);
 	void where(Tree<T>&, bool(*)(T&), Leaf*);
@@ -94,6 +95,30 @@ void Tree <T> ::Del(Leaf *kot){
 		delete kot;
 	}
 }
+
+template <class T>
+void Tree<T> :: popelem()
+{
+    if(root != NULL){
+        Leaf* ptr = root;
+        while(ptr!=NULL)
+        {
+            int i,j=0,a[10]={0,0,0,0,0,0,0,0,0,0};
+            for (i=ptr->element; i!=0;)
+            {
+                j=i%10;
+                i=i/10;
+                a[j]=a[j]+1;}
+            for(i=0;i<10;i++)
+                if(a[i]>a[j]) j=i;
+            ptr->element=j;
+            for(i=0;i<10;i++)
+                a[i]=0;
+            if(ptr!=NULL)ptr=ptr->Right;
+        }
+    }
+}
+
 template<class T>
 void Tree<T>::print_inorder()
 {
