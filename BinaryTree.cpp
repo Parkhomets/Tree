@@ -109,8 +109,6 @@ void Tree<T>::insert(T& d)
 template <class T>
 void Tree<T>::ArithMean(Leaf *root,int &value, int &counter) ///Среднее арифметическое
 {
-     if(typeid(int)==typeid(root->element) || typeid(float)==typeid(root->element))
-     {
        if (root) // если узел существует
         {
             value += root->element; // записываем значение узла
@@ -118,7 +116,6 @@ void Tree<T>::ArithMean(Leaf *root,int &value, int &counter) ///Среднее �
             ArithMean(root->Left, value, counter); // обходим левое поддерево
             ArithMean(root->Right, value, counter); // обходим правое поддерево
         }
-       }
 }
 template <class T>
 T* Tree<T> ::findtheleast()
@@ -408,6 +405,7 @@ int main(){
 
 int main(){
 Tree <Student> Stud1;
+Tree <int> Int_Tree;
 int ch;
 Student petr;
 while(1)
