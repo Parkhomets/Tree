@@ -21,6 +21,7 @@ public:
 	};
 	Leaf *root;
 	int high;
+    void swap(Leaf *one, Leaf *two);
 	void Del(Leaf *kot);
 	void insert(T& d);
 	void print_inorder();
@@ -42,6 +43,19 @@ private:
 	void _copy(Leaf* cpy, Leaf* orig);
 
 };
+
+template <typename T>
+void Tree<T>::swap(Leaf *one, Leaf *two){
+    if (one != NULL and two != NULL) {
+        T temp = two->element;
+        two->element = one->element;
+        one->element = temp;
+    }
+    else {
+        cout << "Can't swap with NULL." << endl;
+    }
+}
+
 template <class T>
 void Tree<T>::insert(T& d)
 {
@@ -344,19 +358,20 @@ void Tree<T>::copy(Tree<T>& new_tree)
 	}
 }
 
-
-/*int main(){
-	Tree <int> Stud1;
-	for (int i = 0; i<10; i++){
-		Stud1.insert(i);
-	}
-	Stud1.print_inorder();
-	Tree <int> Stud2;
-	//Stud1.copy(Stud2);
-	Stud2.print_inorder();
-	Stud1.where(Stud2, more_then_five, Stud1.root);
-	Stud2.print_inorder();
+/*
+int main(){
+    Tree <int> Stud1;
+    for (int i = 0; i<10; i++){
+        Stud1.insert(i);
+    }
+    Stud1.print_inorder();
+    Tree <int> Stud2;
+    //Stud1.copy(Stud2);
+    Stud2.print_inorder();
+    Stud1.where(Stud2, more_then_five, Stud1.root);
+    Stud2.print_inorder();
 }*/
+
 
 int main(){
 Tree <Student> Stud1;
