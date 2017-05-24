@@ -31,12 +31,15 @@ public:
 	void copy(Tree<T>&);
 	void where(Tree<T>&, bool(*)(T&), Leaf*);
 	int Find(Leaf* root);
+	int heightOfTree(Leaf* root);
+    void showH(int a);
 protected:
 	void ascendinground(Leaf* L);
 private:
 	void inorder(Leaf*, int);
 	void SymmetricOrder(Leaf*);
 	void _copy(Leaf* cpy, Leaf* orig);
+
 };
 template <class T>
 void Tree<T>::insert(T& d)
@@ -186,6 +189,41 @@ int Tree<T>::Find(Leaf* root){
 	else return 0;
 }
 
+
+template <typename T>
+int Tree<T>::heightOfTree(Leaf* root){//передаем указатель на корень дерева
+
+    int leftcount, rightcount,high;
+    if(root == NULL)
+    {
+        cout<<"null tree"<<endl;
+        return 0;
+    }
+    else{
+        if (root->Left != NULL) {
+         leftcount = heightOfTree(root->Left);
+        }
+        else{
+            leftcount = -1;
+        }
+            if (root->Right != NULL) {
+            rightcount = heightOfTree(root->Right);
+        }
+        else{
+            rightcount = -1;
+            }
+         high = leftcount > rightcount ? leftcount : rightcount;
+    }
+
+    return high+1;
+}
+
+template <typename T>
+void Tree<T>::showH(int a){
+        cout<<a;
+}
+
+
 class Student{
 public:
 	string surname;
@@ -289,7 +327,6 @@ void Tree<T>::copy(Tree<T>& new_tree)
 
 
 /*int main(){
-
 	Tree <int> Stud1;
 	for (int i = 0; i<10; i++){
 		Stud1.insert(i);
@@ -300,7 +337,6 @@ void Tree<T>::copy(Tree<T>& new_tree)
 	Stud2.print_inorder();
 	Stud1.where(Stud2, more_then_five, Stud1.root);
 	Stud2.print_inorder();
-
 }*/
 
 int main(){
@@ -317,7 +353,8 @@ while(1)
    cout<<" 3. Find the least element"<<endl;
    cout<<" 4. Ascending bypass"<<endl;
    cout<<" 5. Find for the entry" << endl;
-   cout<<" 6. Exit "<<endl;
+     cout<<" 6. Height of the tree" << endl;
+   cout<<" 7. Exit "<<endl;
 cout<<" Enter your choice : ";
 cin>>ch;
 switch(ch)
@@ -355,10 +392,15 @@ case 5: cout << endl;
 	}
 	else cout << "The student is not found";
 	break;
-case 6 : system("pause");
+case 6:cout << endl;
+
+cout<<endl;
+cout<<"Height:"<<endl;
+Stud1.showH(Stud1.heightOfTree(Stud1.root));
+break;
+case 7 : system("pause");
 return 0;
 break;
 }
 }
 }
-
