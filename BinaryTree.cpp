@@ -480,7 +480,6 @@ case 5: cout << endl;
 	else cout << "The student is not found";
 	break;
 case 6:cout << endl;
-
 cout<<endl;
 cout<<"Height:"<<endl;
 Stud1.Start();
