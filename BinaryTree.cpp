@@ -34,7 +34,7 @@ public:
 	void copy(Tree<T>&);
 	void where(Tree<T>&, bool(*)(T&), Leaf*);
 	bool Find();
-	
+
 	void ArithMean(Leaf* root,int &element,int &counter);
 	void delete_note(T& k);
 	void Start();
@@ -52,7 +52,7 @@ private:
 	int heightOfTree(Leaf* root);
 
 };
-template <typename T>
+/*template <typename T>
 tree<T>::Leaf* tree<T>::next(tree<T>::Leaf *x)
 {
 	if (x->Right) //правый элемент найден
@@ -99,7 +99,7 @@ tree<T>::Leaf* tree<T>::maximum(tree<T>::Leaf *x)
 {
 	for (; root->Right != nullptr; root = root->Right);
 	return root;
-}
+}*/
 template <typename T>
 void Tree<T>::swap(Leaf *one, Leaf *two){
     if (one != NULL and two != NULL) {
@@ -402,36 +402,34 @@ Tree <T> :: ~Tree(){
 
 template<typename T>
 void Tree<T>::_copy(Leaf* cpy, Leaf* orig){
-	cpy->element = orig->element;
-	cpy->Left = NULL;
-	cpy->Right = NULL;
-	if (orig->Left){
-		cpy->Left = new Leaf;
-		cpy->parent = cpy;
-		_copy(cpy->Left, orig->Left);
-	}
-	else{
-		cpy->Left = NULL;
-	}
-	if (orig->Right){
-		cpy->Right = new Leaf;
-		cpy->parent = cpy;
-		_copy(cpy->Right, orig->Right);
-	}
-	else{
-		cpy->Left = NULL;
-	}
+    cpy->element = orig->element;
+    cpy->Left = NULL;
+    cpy->Right = NULL;
+    if(orig->Left){
+        cpy->Left = new Leaf;
+        cpy->parent = cpy;
+        _copy(cpy->Left, orig->Left);
+    }else{
+        cpy->Left = NULL;
+    }
+    if(orig->Right){
+        cpy->Right = new Leaf;
+        cpy->parent = cpy;
+        _copy(cpy->Right, orig->Right);
+    }else{
+        cpy->Right = NULL;
+    }
 }
 
 template <typename T>
 void Tree<T>::copy(Tree<T>& new_tree)
 {
-	new_tree.Del(new_tree.root);
-	if (this->root){
-		new_tree.root = new Leaf;
-		_copy(new_tree.root, this->root);
-		new_tree.high = this->high;
-	}
+    new_tree.Del(new_tree.root);
+    if(this->root){
+        new_tree.root = new Leaf;
+        _copy(new_tree.root, this->root);
+        new_tree.high = this->high;
+    }
 }
 
 template <typename T>
@@ -456,19 +454,8 @@ void Tree<T>::private_delete_note(T& k, Leaf* note){
 	}
 }
 
-/*
-int main(){
-    Tree <int> Stud1;
-    for (int i = 0; i<10; i++){
-        Stud1.insert(i);
-    }
-    Stud1.print_inorder();
-    Tree <int> Stud2;
-    //Stud1.copy(Stud2);
-    Stud2.print_inorder();
-    Stud1.where(Stud2, more_then_five, Stud1.root);
-    Stud2.print_inorder();
-}*/
+
+
 
 
 int main(){
@@ -491,7 +478,8 @@ while(1)
    cout<<" 8. Total number of leaves "<<endl;
    cout<<" 9.The arithmetic mean of elements(only for int and float)"<<endl;
 cout << "10. Delete node " << endl;
-cout<<"11. Exit "<<endl;
+cout << "11. Copy" << endl;
+cout<<"12. Exit "<<endl;
 cout<<" Enter your choice : ";
 cin>>ch;
 switch(ch)
@@ -538,12 +526,13 @@ break;
 	Stud1.popelem();
 	break;*/
 case 8 : system("pause");
-case 9 : cout << endl;
+case 9 :
+    {cout << endl;
     int value=0;
     int counter=0;
 	Int_Tree.ArithMean(Int_Tree.root, value, counter);
 	cout << "The arithmetic mean of elements= " << (double)value / counter << endl;
-break;
+break;}
 case 10:
 cout << endl;
 int k;
@@ -551,6 +540,17 @@ cout << "Enter the value of the node you want to delete: ";
 cin >> k;
 Int_Tree.delete_note(k);
 break;
+case 11:
+    cout << endl;
+    Tree <int> Stud3;
+	for(int i=0; i<10 ; i++){
+        Stud3.insert(i);
+	}
+	Stud3.print_inorder();
+	Tree <int> Stud2;
+	Stud3.copy(Stud2);
+	Stud2.print_inorder();
+	break;
 }
 }
 return 0;
