@@ -34,9 +34,10 @@ public:
 	void copy(Tree<T>&);
 	void where(Tree<T>&, bool(*)(T&), Leaf*);
 	bool Find();
-	int heightOfTree(Leaf* root);
+	
 	void ArithMean(Leaf* root,int &element,int &counter);
 	void delete_note(T& k);
+	void Start();
     
 protected:
 	void ascendinground(Leaf* L);
@@ -45,6 +46,7 @@ private:
 	void SymmetricOrder(Leaf*);
 	void _copy(Leaf* cpy, Leaf* orig);
 	void private_delete_note(T& k, Leaf* note);
+	int heightOfTree(Leaf* root);
 
 };
 
@@ -258,6 +260,10 @@ bool Tree<T>::Find(){
 	return false;
 }
 
+template <class T>
+void Tree<T>::Start(){
+    cout<<heightOfTree(root);
+}
 
 template <typename T>
 int Tree<T>::heightOfTree(Leaf* root){//передаем указатель на корень дерева
@@ -477,7 +483,7 @@ case 6:cout << endl;
 
 cout<<endl;
 cout<<"Height:"<<endl;
-cout << Stud1.heightOfTree(Stud1.root);
+Stud1.Start();
 break;
 /*case 7 : cout << endl;
 	Stud1.popelem();
