@@ -454,7 +454,21 @@ void Tree<T>::private_delete_note(T& k, Leaf* note){
 	}
 }
 
-
+ template <typename T>
+ void Tree<T>::ChangeBase(Leaf *l, int base){
+     char s[65];
+     int i = 0;
+     if (l != NULL) {
+        itoa(l->element, s, base);
+     	l->element = atoi(s);
+     	if (l->Left != NULL) {
+     		ChangeBase(l->Left, base);
+     	    }
+     	if (l->Right != NULL) {
+     		ChangeBase(l->Right, base);
+     	}
+     }
+ }
 
 
 
@@ -477,9 +491,10 @@ while(1)
    cout<<" 7. Convert elements to maximum number "<<endl;
    cout<<" 8. Total number of leaves "<<endl;
    cout<<" 9.The arithmetic mean of elements(only for int and float)"<<endl;
-cout << "10. Delete node " << endl;
-cout << "11. Copy" << endl;
-cout<<"12. Exit "<<endl;
+count<<"10.Base conversion"<<endl;
+cout << "11. Delete node " << endl;
+cout << "12. Copy" << endl;
+cout<<"13 Exit "<<endl;
 cout<<" Enter your choice : ";
 cin>>ch;
 switch(ch)
@@ -533,14 +548,19 @@ case 9 :
 	Int_Tree.ArithMean(Int_Tree.root, value, counter);
 	cout << "The arithmetic mean of elements= " << (double)value / counter << endl;
 break;}
-case 10:
+	case 10 :{ cout << endl;
+     int k;
+  	cout << " Select number system" <<  endl;
+  	cin>>k;
+  	Stud1.ChangeBase(.Stud1.root,k);}
+case 11:
 cout << endl;
 int k;
 cout << "Enter the value of the node you want to delete: ";
 cin >> k;
 Int_Tree.delete_note(k);
 break;
-case 11:
+case 12:
     cout << endl;
     Tree <int> Stud3;
 	for(int i=0; i<10 ; i++){
