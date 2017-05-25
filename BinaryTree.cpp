@@ -36,6 +36,7 @@ public:
 	bool Find();
 	int heightOfTree(Leaf* root);
 	void ArithMean(Leaf* root,int &element,int &counter);
+	void delete_note(T& k);
     
 protected:
 	void ascendinground(Leaf* L);
@@ -43,6 +44,7 @@ private:
 	void inorder(Leaf*, int);
 	void SymmetricOrder(Leaf*);
 	void _copy(Leaf* cpy, Leaf* orig);
+	void private_delete_note(T& k, Leaf* note);
 
 };
 
@@ -388,6 +390,28 @@ void Tree<T>::copy(Tree<T>& new_tree)
 	}
 }
 
+template <typename T>
+void Tree<T>::delete_note(T& k){ private_delete_note(k, this->root); }
+
+template <typename T>
+void Tree<T>::private_delete_note(T& k, Leaf* note){
+	if (note == NULL)
+		return;
+	if (note->element == k){
+		Leaf* P = note->parent;
+		if (P->Left == note)
+			P->Left = NULL;
+		else
+			P->Right = NULL;
+		Del(note);
+		return;
+	}
+	else{
+		private_delete_note(k, note->Left);
+		private_delete_note(k, note->Right);
+	}
+}
+
 /*
 int main(){
     Tree <int> Stud1;
@@ -475,6 +499,13 @@ case 9 : cout << endl;
     int counter=0;
 	Int_Tree.ArithMean(Int_Tree.root, value, counter);
 	cout << "The arithmetic mean of elements= " << (double)value / counter << endl;
+break;
+case 10:
+cout << endl;
+int k;
+cout << "Enter the value of the node you want to delete: ";
+cin >> k;
+Int_Tree.delete_note(k);
 break;
 }
 }
