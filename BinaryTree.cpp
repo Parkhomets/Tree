@@ -262,29 +262,17 @@ bool Tree<T>::Find(){
 template <typename T>
 int Tree<T>::heightOfTree(Leaf* root){//передаем указатель на корень дерева
 
-    int leftcount, rightcount,high;
-    if(root == NULL)
+    Leaf* p = root;
+
+    if(p == NULL)
     {
-        cout<<"null tree"<<endl;
+        cout<<" "<<endl;
         return 0;
     }
     else{
-        if (root->Left != NULL) {
-         leftcount = heightOfTree(root->Left);
-        }
-        else{
-            leftcount = -1;
-        }
-            if (root->Right != NULL) {
-            rightcount = heightOfTree(root->Right);
-        }
-        else{
-            rightcount = -1;
-            }
-         high = leftcount > rightcount ? leftcount : rightcount;
-    }
 
-    return high+1;
+    return max(heightOfTree(p->Left),heightOfTree(p->Right))+1;
+    }
 }
 
 
