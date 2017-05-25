@@ -446,7 +446,8 @@ while(1)
    cout<<" 7. Convert elements to maximum number "<<endl;
    cout<<" 8. Total number of leaves "<<endl;
    cout<<" 9.The arithmetic mean of elements(only for int and float)"<<endl;
-cout<<"10. Exit "<<endl;
+cout << "10. Delete node " << endl;
+cout<<"11. Exit "<<endl;
 cout<<" Enter your choice : ";
 cin>>ch;
 switch(ch)
