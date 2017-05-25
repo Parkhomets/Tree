@@ -36,7 +36,6 @@ public:
 	bool Find();
 
 	void ArithMean(Leaf* root,int &element,int &counter);
-	void ChangeBase(Leaf* root,int &p);
 	void delete_note(T& k);
 	void Start();
         Leaf* next(Leaf *x);
@@ -214,7 +213,7 @@ void Tree<T> :: popelem()
         }
     }
 }
- template <typename T>
+/* template <typename T>
  void Tree<T>::ChangeBase(Leaf *root, int p){
      char s[65];
      int i = 0;
@@ -228,7 +227,7 @@ void Tree<T> :: popelem()
      		ChangeBase(root->Right, p);
      	}
      }
- }
+ }*/
 template<class T>
 void Tree<T>::print_inorder()
 {
@@ -489,7 +488,6 @@ while(1)
    cout<<" 7. Convert elements to maximum number "<<endl;
    cout<<" 8. Total number of leaves "<<endl;
    cout<<" 9.The arithmetic mean of elements(only for int and float)"<<endl;
-cout<<"10.Base conversion"<<endl;
 cout << "11. Delete node " << endl;
 cout << "12. Copy" << endl;
 cout<<"13 Exit "<<endl;
@@ -546,12 +544,6 @@ case 9 :
 	Int_Tree.ArithMean(Int_Tree.root, value, counter);
 	cout << "The arithmetic mean of elements= " << (double)value / counter << endl;
 break;}
-	case 10 : cout << endl;
-     {int p;
-  	cout << " Select number system" <<  endl;
-  	cin>>p;
-  	Stud1.ChangeBase(Stud1.root,p);
-  	break;}
 case 11:
 cout << endl;
  int k;
