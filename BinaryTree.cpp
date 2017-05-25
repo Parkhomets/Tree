@@ -38,7 +38,10 @@ public:
 	void ArithMean(Leaf* root,int &element,int &counter);
 	void delete_note(T& k);
 	void Start();
-    
+        Leaf* next(Leaf *x);
+	Leaf* prev(Leaf *x);
+	Leaf* minimum(Leaf *root);
+	Leaf* maximum(Leaf *root);
 protected:
 	void ascendinground(Leaf* L);
 private:
@@ -49,7 +52,54 @@ private:
 	int heightOfTree(Leaf* root);
 
 };
+template <typename T>
+tree<T>::Leaf* tree<T>::next(tree<T>::Leaf *x)
+{
+	if (x->Right) //правый элемент найден
+	{
+		return minimum(x->Right);
+	}
+	else
+	{
+		while (x->parent != nullptr && x->parent->Left == x)
+		{
+			x = x->parent;
+		}
+		return x;
+	}
+}
 
+template <typename T>
+tree<T>::Leaf* tree<T>::prev(tree<T>::Leaf *x)
+Leaf* prev(Leaf *x) //предыдущий элемент
+{
+	if (x->Left) //левый элемент найден
+	{
+		return maximum(x->Left);
+	}
+	else
+	{
+		while (x->parent != nullptr && x->parent->Right == x)
+		{
+			x = x->parent;
+		}
+		return x;
+	}
+}
+
+template <typename T>
+tree<T>::Leaf* tree<T>::minimum(tree<T>::Leaf *x)
+{
+	for (; root->Left != nullptr; root = root->Left);
+	return root;
+}
+
+template <typename T>
+tree<T>::Leaf* tree<T>::maximum(tree<T>::Leaf *x)
+{
+	for (; root->Right != nullptr; root = root->Right);
+	return root;
+}
 template <typename T>
 void Tree<T>::swap(Leaf *one, Leaf *two){
     if (one != NULL and two != NULL) {
