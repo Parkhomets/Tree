@@ -36,6 +36,7 @@ public:
 	bool Find();
 
 	void ArithMean(Leaf* root,int &element,int &counter);
+	void ChangeBase(Leaf* root,int &p);
 	void delete_note(T& k);
 	void Start();
         Leaf* next(Leaf *x);
@@ -47,7 +48,6 @@ protected:
 private:
 	void inorder(Leaf*, int);
 	void SymmetricOrder(Leaf*);
-	void ChangeBase(Leef* l,int &k);
 	void _copy(Leaf* cpy, Leaf* orig);
 	void private_delete_note(T& k, Leaf* note);
 	int heightOfTree(Leaf* root);
@@ -69,7 +69,6 @@ tree<T>::Leaf* tree<T>::next(tree<T>::Leaf *x)
 		return x;
 	}
 }
-
 template <typename T>
 tree<T>::Leaf* tree<T>::prev(tree<T>::Leaf *x)
 Leaf* prev(Leaf *x) //предыдущий элемент
@@ -87,14 +86,12 @@ Leaf* prev(Leaf *x) //предыдущий элемент
 		return x;
 	}
 }
-
 template <typename T>
 tree<T>::Leaf* tree<T>::minimum(tree<T>::Leaf *x)
 {
 	for (; root->Left != nullptr; root = root->Left);
 	return root;
 }
-
 template <typename T>
 tree<T>::Leaf* tree<T>::maximum(tree<T>::Leaf *x)
 {
@@ -217,7 +214,21 @@ void Tree<T> :: popelem()
         }
     }
 }
-
+ template <typename T>
+ void Tree<T>::ChangeBase(Leaf *root, int p){
+     char s[65];
+     int i = 0;
+     if (root != NULL) {
+        itoa(root->element, s, p);
+     	root->element = atoi(s);
+     	if (root->Left != NULL) {
+     		ChangeBase(root->Left, p);
+     	    }
+     	if (root->Right != NULL) {
+     		ChangeBase(root->Right, p);
+     	}
+     }
+ }
 template<class T>
 void Tree<T>::print_inorder()
 {
@@ -455,21 +466,7 @@ void Tree<T>::private_delete_note(T& k, Leaf* note){
 	}
 }
 
- template <typename T>
- void Tree<T>::ChangeBase(Leaf *l, int base){
-     char s[65];
-     int i = 0;
-     if (l != NULL) {
-        itoa(l->element, s, base);
-     	l->element = atoi(s);
-     	if (l->Left != NULL) {
-     		ChangeBase(l->Left, base);
-     	    }
-     	if (l->Right != NULL) {
-     		ChangeBase(l->Right, base);
-     	}
-     }
- }
+
 
 
 
@@ -492,7 +489,7 @@ while(1)
    cout<<" 7. Convert elements to maximum number "<<endl;
    cout<<" 8. Total number of leaves "<<endl;
    cout<<" 9.The arithmetic mean of elements(only for int and float)"<<endl;
-count<<"10.Base conversion"<<endl;
+cout<<"10.Base conversion"<<endl;
 cout << "11. Delete node " << endl;
 cout << "12. Copy" << endl;
 cout<<"13 Exit "<<endl;
@@ -549,14 +546,15 @@ case 9 :
 	Int_Tree.ArithMean(Int_Tree.root, value, counter);
 	cout << "The arithmetic mean of elements= " << (double)value / counter << endl;
 break;}
-	case 10 :{ cout << endl;
-     int k;
+	case 10 : cout << endl;
+     {int p;
   	cout << " Select number system" <<  endl;
-  	cin>>k;
-  	Stud1.ChangeBase(Stud1.root,k);}
+  	cin>>p;
+  	Stud1.ChangeBase(Stud1.root,p);
+  	break;}
 case 11:
 cout << endl;
-int k;
+ int k;
 cout << "Enter the value of the node you want to delete: ";
 cin >> k;
 Int_Tree.delete_note(k);
