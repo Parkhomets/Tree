@@ -47,6 +47,7 @@ protected:
 private:
 	void inorder(Leaf*, int);
 	void SymmetricOrder(Leaf*);
+	void ChangeBase(Leef* l,int &k);
 	void _copy(Leaf* cpy, Leaf* orig);
 	void private_delete_note(T& k, Leaf* note);
 	int heightOfTree(Leaf* root);
@@ -552,7 +553,7 @@ break;}
      int k;
   	cout << " Select number system" <<  endl;
   	cin>>k;
-  	Stud1.ChangeBase(.Stud1.root,k);}
+  	Stud1.ChangeBase(Stud1.root,k);}
 case 11:
 cout << endl;
 int k;
